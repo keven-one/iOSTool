@@ -318,7 +318,7 @@
 				ORGANIZATIONNAME = MQL9011;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 96BVNF3TZA;
+						DevelopmentTeam = 3U69X46NFQ;
 						SystemCapabilities = {
 							com.apple.HotspotConfiguration = {
 								enabled = 1;
@@ -585,13 +585,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MRDLNA_Example.entitlements;
-				DEVELOPMENT_TEAM = 96BVNF3TZA;
+				DEVELOPMENT_TEAM = 3U69X46NFQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRDLNA/MRDLNA-Prefix.pch";
 				INFOPLIST_FILE = "MRDLNA/MRDLNA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.retechcorp.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retech.dreambook.hunanshaoer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -603,13 +603,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MRDLNA_Example.entitlements;
-				DEVELOPMENT_TEAM = 96BVNF3TZA;
+				DEVELOPMENT_TEAM = 3U69X46NFQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MRDLNA/MRDLNA-Prefix.pch";
 				INFOPLIST_FILE = "MRDLNA/MRDLNA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.retechcorp.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retech.dreambook.hunanshaoer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

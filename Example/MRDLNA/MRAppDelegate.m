@@ -7,7 +7,10 @@
 //
 
 #import "MRAppDelegate.h"
+#import <NetworkExtension/NEHotspotConfigurationManager.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
+#import <Toast.h>
 @implementation MRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -42,5 +45,49 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    if ([url.scheme isEqualToString:@"kingtool"]) {
+        NSString *relativePath = [url relativePath];
+        NSLog(@"relative path: %@", relativePath);
+        NSString *host = [url host];
+        NSLog(@"host: %@", host);
+        NSString *path = [url path];
+        NSLog(@"path: %@", path);
+        
+        
+        NSString *encodeURLStr = [url.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURLComponents *components = [[NSURLComponents alloc] initWithString:encodeURLStr];
+        [components.queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSLog(@"name: %@  value: %@", obj.name, obj.value);
+        }];
+        NSLog(@"%@-%@",components.queryItems[0].name,components.queryItems[1].name);
+        if (![components.queryItems[0].name isEqualToString:@"name"]||![components.queryItems[1].name isEqualToString:@"password"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"参数不合法" preferredStyle:UIAlertControllerStyleAlert];
+            [self.window.rootViewController presentViewController:alert animated:YES completion:NULL];
+            [self performSelector:@selector(dismissAlert:) withObject:alert afterDelay:2];
+            return YES;
+        }
+        if (@available(iOS 11.0, *)) {
+            NSLog(@"%@",components.queryItems[1].value);
+            NEHotspotConfiguration * hotspotConfig = [[NEHotspotConfiguration alloc] initWithSSID:components.queryItems[0].value passphrase:components.queryItems[1].value isWEP:NO];
+            //调用此方法系统会自动弹窗确认)
+
+            [[NEHotspotConfigurationManager sharedManager]  applyConfiguration:hotspotConfig completionHandler:^(NSError * _Nullable error) {
+                
+                
+            }];
+        }
+        
+    }
+    return YES;
+}
+
+-(void)dismissAlert:(UIAlertController *)object{
+    [object dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 @end
